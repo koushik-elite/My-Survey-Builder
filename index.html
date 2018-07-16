@@ -1,0 +1,193 @@
+<html>
+
+<head>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='dist/formio.full.min.css'>
+  <script src='dist/formio.full.js'></script>
+  <style>
+    .formio-component-score input {
+      width: 100px;
+    }
+
+    .formio-component-question textarea {
+      resize: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='formio'></div>
+  <script type='text/javascript'>
+    window.onload = function () {
+      var builder = {
+        readOnly: true,
+        builder: {
+          basic: false,
+          advanced: false,
+          data: false,
+          layout: false,
+          customBasic: {
+            title: 'Survey builder',
+            default: true,
+            weight: 0,
+            components: {
+              surveys: {
+                title: 'Radio Questions',
+                key: 'survey',
+                icon: 'fa fa-terminal',
+                schema: {
+                  'tags': [],
+                  'type': 'survey',
+                  'validate': {
+                    'customPrivate': false,
+                    'custom': '',
+                    'required': false
+                  },
+                  'persistent': true,
+                  'protected': false,
+                  'defaultValue': '',
+                  'values': [{
+                    'label': 'Yes',
+                    'value': '100'
+                  }, {
+                    'label': 'No',
+                    'value': '0'
+                  }, {
+                    'label': 'N/A',
+                    'value': '0'
+                  }],
+                  'questions': [
+                    {
+                      'question': 'Be curious. Ask probing questions: Who, What, When, Where, Why, and How?',
+                      'value': 'ques1',
+                      'comment': false,
+                      'scores': [
+                        { 'sname': 'perfect', 'scoresl': 7.5 },
+                        { 'sname': 'good', 'scoresl': 5 },
+                        { 'sname': 'average', 'scoresl': 1 },
+                        { 'sname': 'bad', 'scoresl': 0 }
+                      ]
+                    }, {
+                      'question': 'Determine root cause (unstated needs), not just the stated reason for the interaction',
+                      'value': 'ques2',
+                      'comment': true,
+                      'scores': [
+                        { 'sname': 'perfect', 'scoresl': 5 },
+                        { 'sname': 'good', 'scoresl': 2 },
+                        { 'sname': 'average', 'scoresl': 1 },
+                        { 'sname': 'bad', 'scoresl': 0 }
+                      ]
+                    }],
+                  'key': 'surveyQuestions',
+                  'label': 'Survey Questions',
+                  'tableView': true,
+                  'input': true
+                }
+              },
+              fieldset: {
+                title: 'Questions Group',
+                key: 'fieldset',
+                icon: 'fa fa-th-large',
+                schema: {
+                  'tags': [],
+                  'type': 'fieldset',
+                  'persistent': true,
+                  'protected': false,
+                  'defaultValue': '',
+                  'key': 'fieldset',
+                  'legend': 'Questions Group',
+                  'label': 'Questions Group',
+                  'tableView': true,
+                  'input': true
+                }
+              }
+            }
+          },
+        }
+      };
+
+      var formdata = {
+        "type": "form",
+        "tags": [],
+        "owner": "554806425867f4ee203ea861",
+        "components": [
+          {
+            "input": true,
+            "label": "Questions Group",
+            "key": "questionsGroup",
+            "components" : [],
+            "defaultValue": "",
+            "protected": false,
+            "persistent": true,
+            "unique": false,
+            "tableView": true,
+            "type": "fieldset",
+          },
+          /*
+          {
+            "input": true,
+            "label": "Saved Questions",
+            "key": "questions",
+            "questions": [{
+              "value": "howWouldYouRateTheFormIoPlatform",
+              "question": "How would you rate the Form.io platform?",
+              'comment': false,
+              'score': 7.5,
+            }, {
+              "value": "howWasCustomerSupport",
+              "question": "How was Customer Support?",
+              'comment': false,
+              'score': 7.5,
+            }, {
+              "value": "overallExperience",
+              "question": "Overall Experience?",
+              'comment': true,
+              'score': 7.5,
+            }],
+            "values": [{
+              "label": "excellent",
+              "value": 100
+            }, {
+              "label": "great",
+              "value": 60
+            }, {
+              "label": "good",
+              "value": 50
+            }, {
+              "label": "average",
+              "value": 10
+            }, {
+              "label": "poor",
+              "value": 0
+            }],
+            "defaultValue": "",
+            "protected": false,
+            "persistent": true,
+            "type": "survey",
+          }*/
+        ]
+      };
+      // Formio.createForm(document.getElementById('formio'), {}, builder);
+
+      Formio.builder(document.getElementById('formio'), formdata, builder).then(function (instance) {
+        // _this.formio = instance;
+        instance.on('formUpdate', function (event, form) {
+          // console.info(instance.data);
+        });
+        instance.on('saveComponent', function () {
+          console.info(instance.component);
+          // console.info(instance);
+        });
+        instance.on('updateComponent', function () {
+          // console.info(instance);
+        });
+        instance.on('deleteComponent', function () {
+        });
+        // _this.readyResolve(instance);
+        return instance;
+      });
+    };
+  </script>
+</body>
+
+</html>

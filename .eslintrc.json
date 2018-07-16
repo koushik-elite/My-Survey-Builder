@@ -1,0 +1,32 @@
+{
+  "parser": "babel-eslint",
+  "extends": "formio",
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "padded-blocks": ["error", { "blocks": "never", "classes": "never", "switches": "never" }],
+    "max-len": [
+      "warn",
+      {
+        "code": 123,
+        "ignoreComments": true,
+        "ignoreStrings": true
+      }
+    ],
+    "no-console": "off",
+    "prefer-const": "off",
+    "prefer-template": "off",
+    "object-curly-spacing": [
+      "off",
+      "always"
+    ]
+  }
+}
