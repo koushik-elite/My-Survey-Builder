@@ -1,6 +1,6 @@
 {
-  "name": "SurveyBuilder",
-  "version": "1.0",
+  "name": "surveybuilder",
+  "version": "1.0.0",
   "description": "Simple survey builder using form.io, inspired form SurveyJs",
   "main": "index.js",
   "files": [
@@ -27,38 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/formio/formio.js.git"
+    "url": "git+https://github.com/koushik-elite/My-Survey-Builder.git"
   },
-  "contributors": [
-    {
-      "name": "Travis Tidwell",
-      "github": "https://github.com/travist",
-      "email": "travis@form.io"
-    },
-    {
-      "name": "Randall Knutson",
-      "github": "https://github.com/randallknutson",
-      "email": "randall@form.io"
-    },
-    {
-      "name": "Doug Lee",
-      "github": "https://github.com/douglaselee",
-      "email": "douglaselee@comcast.net"
-    },
-    {
-      "name": "Eric Alter",
-      "email": "neolanders@hotmail.com"
-    },
-    {
-      "name": "Guillaume SMAHA",
-      "email": "guillaume.smaha@gmail.com"
-    }
-  ],
+  "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/formio/formio.js/issues"
+    "url": "https://github.com/koushik-elite/My-Survey-Builder/issues"
   },
-  "homepage": "https://github.com/formio/formio.js#readme",
+  "homepage": "https://github.com/koushik-elite/My-Survey-Builder/#readme",
   "dependencies": {
     "browser-cookies": "^1.2.0",
     "choices.js": "^3.0.4",

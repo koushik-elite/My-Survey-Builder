@@ -59,7 +59,7 @@ export default class WebformBuilder extends Webform {
       if (!comp || !comp.component) {
         return container;
       }
-      console.log("-------Adding Component--------------");
+      console.log('-------Adding Component--------------');
       if (!comp.noEdit && !comp.component.internal) {
         // Make sure the component position is relative so the buttons align properly.
         comp.getElement().style.position = 'relative';
