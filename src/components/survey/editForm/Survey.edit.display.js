@@ -15,13 +15,13 @@ export default [
     defaultValue: [{ label: '', value: '', comment: false }],
     components: [
       {
-        label: 'Question\'s',
+        label: 'Question',
         key: 'question',
         input: true,
         type: 'textarea',
       },
       {
-        label: 'Comments',
+        label: 'Comment',
         key: 'comment',
         input: true,
         type: 'checkbox'

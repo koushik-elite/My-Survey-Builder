@@ -152,6 +152,7 @@ export default class DataGridComponent extends NestedComponent {
     const hasTopButton = this.hasTopSubmit();
     const hasEnd = this.hasExtraColumn() || hasTopButton;
     let needsHeader = false;
+    let index = 0;
     const thead = this.ce('thead', null, this.ce('tr', null,
       [
         this.visibleComponents.map(comp => {
@@ -160,6 +161,7 @@ export default class DataGridComponent extends NestedComponent {
             th.setAttribute('class', 'field-required');
           }
           const title = comp.label || comp.title;
+          th.classList.add('header-row-'+(index++));
           if (title && !comp.dataGridLabel) {
             needsHeader = true;
             th.appendChild(this.text(title));
