@@ -425,7 +425,7 @@ body.formio-dialog-open {
 .formio-dialog.formio-dialog-theme-default .formio-dialog-content {
   -webkit-animation: formio-dialog-flyin .5s;
   animation: formio-dialog-flyin .5s;
-  background: #f0f0f0;
+  background: #fff;
   border-radius: 5px;
   font-family: 'Helvetica',sans-serif;
   font-size: 1.1em;
@@ -444,6 +444,8 @@ body.formio-dialog-open {
   position: absolute;
   right: 0;
   top: 0;
+  padding-right: 25px;
+  margin-top: 10px;
 }
 
 .formio-clickable {

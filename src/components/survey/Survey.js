@@ -46,6 +46,10 @@ export default class SurveyComponent extends BaseComponent {
       // Build header.
       const thead = this.ce('thead');
       const thr = this.ce('tr');
+      /*
+      const title = this.ce('th');
+      title.appendChild(this.text(this.component.label));
+      thr.appendChild(title);*/
       thr.appendChild(this.ce('td'));
       _.each(this.component.values, (value) => {
         const th = this.ce('th', {

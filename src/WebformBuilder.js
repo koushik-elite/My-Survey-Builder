@@ -223,7 +223,7 @@ export default class WebformBuilder extends Webform {
     const componentInfo = componentClass ? componentClass.builderInfo : {};
 
     const saveButton = this.ce('button', {
-      class: 'btn btn-success', // btn btn-success
+      class: 'btn btn-primary', // btn btn-success
       style: 'margin-right: 10px;'
     }, this.t('Save'));
 
@@ -233,7 +233,7 @@ export default class WebformBuilder extends Webform {
     }, this.t('Cancel'));
 
     const removeButton = this.ce('button', {
-      class: 'btn btn-danger'
+      class: 'btn btn-default'
     }, this.t('Remove'));
 
     const componentEdit = this.ce('div', {}, [
@@ -264,10 +264,10 @@ export default class WebformBuilder extends Webform {
         class: 'row'
       }, [
           this.ce('div', {
-            class: 'col col-sm-11'
+          class: 'col col-sm-12'
           }, formioForm),
           this.ce('div', {
-            class: 'col col-sm-11'
+          class: 'col col-sm-12'
           }, [
               this.ce('div', {
                 class: 'card panel panel-default preview-panel'
@@ -282,7 +282,7 @@ export default class WebformBuilder extends Webform {
             }, this.componentPreview)
           ]*/),
               this.ce('div', {
-                style: 'margin-top: 10px;'
+            style: 'margin-top: 10px; float:right'
               }, [
                   saveButton,
                   cancelButton,
@@ -425,18 +425,25 @@ export default class WebformBuilder extends Webform {
     }
 
     info = _.clone(info);
-    const groupAnchor = this.ce('button', {
-      class: 'btn btn-block builder-group-button',
+
+    const folderIcon = this.ce('i', {
+      class: 'fa fa-folder-open',
+    });
+
+    const groupAnchor = this.ce('span', {
+      class: 'builder-group-button',
       'data-toggle': 'collapse',
       'data-parent': `#${container.id}`,
       'data-target': `#group-${info.key}`
-    }, this.text(info.title));
+    }, [folderIcon, this.text(info.title)] );
 
     // See if we have bootstrap.js installed.
     const hasBootstrapJS = (typeof $ === 'function') && (typeof $().collapse === 'function');
 
     // Add a listener when it is clicked.
+    /*
     if (!hasBootstrapJS) {
+
       this.addEventListener(groupAnchor, 'click', (event) => {
         event.preventDefault();
         const clickedGroupId = event.target.getAttribute('data-target').replace('#group-', '');
@@ -463,7 +470,7 @@ export default class WebformBuilder extends Webform {
           this.scrollSidebar();
         }
       });
-    }
+    }*/
 
     info.element = this.ce('div', {
       class: 'card panel panel-default form-builder-panel',
@@ -540,7 +547,7 @@ export default class WebformBuilder extends Webform {
     }
     component.element = this.ce('span', {
       id: `builder-${component.key}`,
-      class: 'btn btn-primary btn-xs btn-block formcomponent drag-copy'
+      class: 'formcomponent drag-copy'
     });
     if (component.icon) {
       component.element.appendChild(this.ce('i', {
@@ -646,6 +653,13 @@ export default class WebformBuilder extends Webform {
   }
 
   onDrop(element, target, source, sibling) {
+    var tid = `${element.id}`;
+    var cls = `${target.className}`;
+    if (cls === 'card-body drag-container' && tid === 'builder-fieldset') {
+      // alert('Group cannot be inside another group');
+      target.removeChild(element);
+      return console.warn('Group cannot be inside another group');
+    }
     const builderElement = source.querySelector(`#${element.id}`);
     const newParent = this.getParentElement(element);
     if (!newParent || !newParent.component) {

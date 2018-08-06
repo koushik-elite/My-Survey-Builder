@@ -61,7 +61,7 @@ export default [
     key: 'values',
     tooltip: 'The values that can be selected per question. Example: \'Yes\', \'No\', etc.',
     weight: 50,
-    defaultValue: [{ label: '', value: '' }],
+    defaultValue: [{ label: '', value: '', commentmandatory: false }],
     components: [
       {
         label: 'Label',
@@ -74,6 +74,12 @@ export default [
         key: 'value',
         input: true,
         type: 'number'
+      },
+      {
+        label: 'Comment Mandatory',
+        key: 'commentmandatory',
+        input: true,
+        type: 'checkbox'
       }
     ]
   }

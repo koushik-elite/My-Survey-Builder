@@ -32,9 +32,9 @@
             weight: 0,
             components: {
               surveys: {
-                title: 'Radio Questions',
+                title: 'Yes/No Questions',
                 key: 'survey',
-                icon: 'fa fa-terminal',
+                icon: 'fa fa-list-alt',
                 schema: {
                   'tags': [],
                   'type': 'survey',
@@ -53,14 +53,15 @@
                     'label': 'No',
                     'value': '0'
                   }, {
-                    'label': 'N/A',
-                    'value': '0'
+                    'label': 'NA',
+                    'value': '100'
                   }],
                   'questions': [
                     {
                       'question': 'Be curious. Ask probing questions: Who, What, When, Where, Why, and How?',
                       'value': 'ques1',
                       'comment': false,
+                      'score': 4,
                       'scores': [
                         { 'sname': 'perfect', 'scoresl': 7.5 },
                         { 'sname': 'good', 'scoresl': 5 },
@@ -71,6 +72,7 @@
                       'question': 'Determine root cause (unstated needs), not just the stated reason for the interaction',
                       'value': 'ques2',
                       'comment': true,
+                      'score': 5,
                       'scores': [
                         { 'sname': 'perfect', 'scoresl': 5 },
                         { 'sname': 'good', 'scoresl': 2 },
@@ -84,10 +86,63 @@
                   'input': true
                 }
               },
+              ratings: {
+                title: 'Rating Questions',
+                key: 'rsurvey',
+                icon: 'fa fa-star',
+                schema: {
+                  'tags': [],
+                  'type': 'survey',
+                  'persistent': true,
+                  'protected': false,
+                  'defaultValue': '',
+                  'values': [{
+                    'label': 'Always',
+                    'value': '100'
+                  }, {
+                    'label': 'Often',
+                    'value': '70'
+                  }, {
+                    'label': 'Sometimes',
+                    'value': '35'
+                  }, {
+                    'label': 'Never',
+                    'value': '0'
+                  }],
+                  'questions': [
+                    {
+                      'question': 'Demonstrate Care by showing empathy and putting themself in the customers shoes.',
+                      'value': 'ques1',
+                      'comment': false,
+                      'score': 4,
+                      'scores': [
+                        { 'sname': 'perfect', 'scoresl': 7.5 },
+                        { 'sname': 'good', 'scoresl': 5 },
+                        { 'sname': 'average', 'scoresl': 1 },
+                        { 'sname': 'bad', 'scoresl': 0 }
+                      ]
+                    }, {
+                      'question': 'Be knowledgeable. Demonstrate confidence and expertise.',
+                      'value': 'ques2',
+                      'comment': true,
+                      'score': 5,
+                      'scores': [
+                        { 'sname': 'perfect', 'scoresl': 5 },
+                        { 'sname': 'good', 'scoresl': 2 },
+                        { 'sname': 'average', 'scoresl': 1 },
+                        { 'sname': 'bad', 'scoresl': 0 }
+                      ]
+                    }],
+                  'key': 'ratingQuestions',
+                  'label': 'Rating Questions',
+                  'tableView': true,
+                  'input': true
+                }
+              },
               fieldset: {
                 title: 'Questions Group',
                 key: 'fieldset',
-                icon: 'fa fa-th-large',
+                icon: 'fa fa-object-group',
                 schema: {
                   'tags': [],
                   'type': 'fieldset',
@@ -96,7 +151,7 @@
                   'defaultValue': '',
                   'key': 'fieldset',
                   'legend': 'Questions Group',
-                  'label': 'Questions Group',
+                  'label': 'Sample Questions Group',
                   'tableView': true,
                   'input': true
                 }
@@ -115,56 +170,14 @@
             "input": true,
             "label": "Questions Group",
             "key": "questionsGroup",
-            "components" : [],
+            "components": [],
             "defaultValue": "",
             "protected": false,
             "persistent": true,
             "unique": false,
             "tableView": true,
             "type": "fieldset",
-          },
-          /*
-          {
-            "input": true,
-            "label": "Saved Questions",
-            "key": "questions",
-            "questions": [{
-              "value": "howWouldYouRateTheFormIoPlatform",
-              "question": "How would you rate the Form.io platform?",
-              'comment': false,
-              'score': 7.5,
-            }, {
-              "value": "howWasCustomerSupport",
-              "question": "How was Customer Support?",
-              'comment': false,
-              'score': 7.5,
-            }, {
-              "value": "overallExperience",
-              "question": "Overall Experience?",
-              'comment': true,
-              'score': 7.5,
-            }],
-            "values": [{
-              "label": "excellent",
-              "value": 100
-            }, {
-              "label": "great",
-              "value": 60
-            }, {
-              "label": "good",
-              "value": 50
-            }, {
-              "label": "average",
-              "value": 10
-            }, {
-              "label": "poor",
-              "value": 0
-            }],
-            "defaultValue": "",
-            "protected": false,
-            "persistent": true,
-            "type": "survey",
-          }*/
+          }
         ]
       };
       // Formio.createForm(document.getElementById('formio'), {}, builder);
@@ -182,6 +195,7 @@
           // console.info(instance);
         });
         instance.on('deleteComponent', function () {
+          // console.info(instance);
         });
         // _this.readyResolve(instance);
         return instance;

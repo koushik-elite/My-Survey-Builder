@@ -11,7 +11,7 @@ export default [
     validate: {
       required: true
     }
-  },
+  },/*
   {
     weight: 10,
     type: 'checkbox',
@@ -86,7 +86,6 @@ export default [
       }
     }
   },
-  /*
   {
     weight: 100,
     type: 'textfield',
@@ -140,7 +139,32 @@ export default [
     label: 'Tab Index',
     placeholder: 'Tab Index',
     tooltip: 'Sets the tabindex attribute of this component to override the tab order of the form. See the <a href=\\\'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex\\\'>MDN documentation</a> on tabindex for more information.'
+  },*/
+  {
+    weight: 700,
+    type: 'checkbox',
+    label: 'Mandatory',
+    tooltip: 'This question is Mandatory',
+    key: 'mandatory',
+    input: true
   },
+  {
+    type: 'select',
+    input: true,
+    key: 'questionType',
+    label: 'Question Type',
+    tooltip: 'Type of question.',
+    weight: 700,
+    defaultValue: 'default',
+    dataSrc: 'values',
+    data: {
+      values: [
+        { label: 'Default', value: 'default' },
+        { label: 'Negative (Reset total to zero)', value: 'negative-reset' },
+        { label: 'Negative (subract with total)', value: 'left-right' }
+      ]
+    }
+  }/*,
   {
     weight: 700,
     type: 'checkbox',
