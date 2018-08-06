@@ -133,6 +133,7 @@ export default class DataGridComponent extends NestedComponent {
     this.tableElement.appendChild(this.ce('tbody', null, tableRows));
 
     // Create the add row button footer element.
+    /*
     if (this.hasBottomSubmit()) {
       this.tableElement.appendChild(this.ce('tfoot', null,
         this.ce('tr', null,
@@ -141,10 +142,16 @@ export default class DataGridComponent extends NestedComponent {
           )
         )
       ));
-    }
+    }*/
 
     // Add the table to the element.
     this.element.appendChild(this.tableElement);
+
+    if (this.hasBottomSubmit()) {
+      this.element.appendChild(this.ce('div', {
+        class: 'add-another-button',
+      },  this.addButton() ));
+    }
   }
 
   // Build the header.
@@ -152,7 +159,6 @@ export default class DataGridComponent extends NestedComponent {
     const hasTopButton = this.hasTopSubmit();
     const hasEnd = this.hasExtraColumn() || hasTopButton;
     let needsHeader = false;
-    let index = 0;
     const thead = this.ce('thead', null, this.ce('tr', null,
       [
         this.visibleComponents.map(comp => {
@@ -161,7 +167,6 @@ export default class DataGridComponent extends NestedComponent {
             th.setAttribute('class', 'field-required');
           }
           const title = comp.label || comp.title;
-          th.classList.add('header-row-'+(index++));
           if (title && !comp.dataGridLabel) {
             needsHeader = true;
             th.appendChild(this.text(title));

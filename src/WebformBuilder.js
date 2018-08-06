@@ -244,7 +244,7 @@ export default class WebformBuilder extends Webform {
             class: 'col col-sm-6 modal-header'
           }, this.ce('h4', {
             class: 'modal-title pull-left'
-          }, `${componentInfo.title} Component`)),
+          }, `${componentInfo.title}`)),
           /*
           this.ce('div', {
             class: 'col col-sm-6'
