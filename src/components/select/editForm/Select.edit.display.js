@@ -1,7 +1,7 @@
 export default [
     {
         type: 'textarea',
-        key: 'optionvalue',
+        key: 'rawvalue',
         input: true,
         weight: 10,
         label: 'Drop down Data',
