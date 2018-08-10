@@ -1,4 +1,4 @@
-export default [
+export default [/*
   {
     weight: 410,
     type: 'textfield',
@@ -50,5 +50,5 @@ export default [
     input: true,
     key: 'suffix',
     label: 'Suffix'
-  }
+  }*/
 ];

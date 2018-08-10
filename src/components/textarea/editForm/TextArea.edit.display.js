@@ -1,4 +1,5 @@
 export default [
+  /*
   {
     key: 'inputMask',
     ignore: true
@@ -90,5 +91,5 @@ export default [
       }
     },
     weight: 417
-  }
+  }*/
 ];

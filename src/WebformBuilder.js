@@ -49,7 +49,7 @@ export default class WebformBuilder extends Webform {
               { attr: 'style', value: 'text-align:center; margin-bottom: 0px;' },
               { attr: 'role', value: 'alert' }
             ],
-            content: 'Drag and Drop a form component'
+            content: 'Drag and Drop a Question or Group'
           }
         ];
       }
@@ -63,12 +63,15 @@ export default class WebformBuilder extends Webform {
       if (!comp.noEdit && !comp.component.internal) {
         // Make sure the component position is relative so the buttons align properly.
         comp.getElement().style.position = 'relative';
+        // console.info(comp);
 
         const removeButton = parent.ce('div', {
           class: 'btn btn-xxs btn-danger component-settings-button component-settings-button-remove'
         }, parent.getIcon('remove'));
-        parent.addEventListener(removeButton, 'click', () => parent.root.deleteComponent(comp));
 
+        if (!comp.component.parent) {
+          parent.addEventListener(removeButton, 'click', () => parent.root.deleteComponent(comp));
+        }
         const editButton = parent.ce('div', {
           class: 'btn btn-xxs btn-default component-settings-button component-settings-button-edit'
         }, parent.getIcon('cog'));
@@ -133,6 +136,9 @@ export default class WebformBuilder extends Webform {
       });
       this.prependTo(this.builderSidebar, this.wrapper);
       this.addClass(this.element, 'col-xs-8 col-sm-9 col-md-10 formarea');
+      this.element.setAttribute('_internal', 'builder');
+      this.element._internal = 'builder';
+      this.element['_internal'] = 'builder';
       this.element.component = this;
     });
   }
@@ -221,7 +227,7 @@ export default class WebformBuilder extends Webform {
       class: 'component-preview'
     });*/
     const componentInfo = componentClass ? componentClass.builderInfo : {};
-
+    console.info(componentInfo);
     const saveButton = this.ce('button', {
       class: 'btn btn-primary', // btn btn-success
       style: 'margin-right: 10px;'
@@ -264,10 +270,10 @@ export default class WebformBuilder extends Webform {
         class: 'row'
       }, [
           this.ce('div', {
-          class: 'col col-sm-12'
+            class: 'col col-sm-12'
           }, formioForm),
           this.ce('div', {
-          class: 'col col-sm-12'
+            class: 'col col-sm-12'
           }, [
               this.ce('div', {
                 class: 'card panel panel-default preview-panel'
@@ -282,7 +288,7 @@ export default class WebformBuilder extends Webform {
             }, this.componentPreview)
           ]*/),
               this.ce('div', {
-            style: 'margin-top: 10px; float:right'
+                style: 'margin-top: 10px; float:right'
               }, [
                   saveButton,
                   cancelButton,
@@ -435,7 +441,7 @@ export default class WebformBuilder extends Webform {
       'data-toggle': 'collapse',
       'data-parent': `#${container.id}`,
       'data-target': `#group-${info.key}`
-    }, [folderIcon, this.text(info.title)] );
+    }, [folderIcon, this.text(info.title)]);
 
     // See if we have bootstrap.js installed.
     const hasBootstrapJS = (typeof $ === 'function') && (typeof $().collapse === 'function');
@@ -654,12 +660,20 @@ export default class WebformBuilder extends Webform {
 
   onDrop(element, target, source, sibling) {
     var tid = `${element.id}`;
-    var cls = `${target.className}`;
-    if (cls === 'card-body drag-container' && tid === 'builder-fieldset') {
-      // alert('Group cannot be inside another group');
-      target.removeChild(element);
-      return console.warn('Group cannot be inside another group');
+    var cls = `${target._internal}`;
+
+    console.info(tid + ' ------ ' + cls);
+
+    if (cls === 'builder') {
+      if (tid !== 'builder-fieldset') {
+        target.removeChild(element);
+        return console.warn('Group cannot be inside another group');
+      }
+      else {
+        element['_internal'] = 'fieldset';
+      }
     }
+
     const builderElement = source.querySelector(`#${element.id}`);
     const newParent = this.getParentElement(element);
     if (!newParent || !newParent.component) {

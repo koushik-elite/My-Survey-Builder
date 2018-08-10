@@ -93,22 +93,23 @@ export default class SurveyComponent extends BaseComponent {
           index = index + 1;
         });
 
+        const commentTd = this.ce('td');
         // Comment text field
         if (question.comment) {
           // console.info(question);
-          const td = this.ce('td');
           const commentinput = this.ce('input', {
             type: 'text',
             name: `data[${this.key}][${question.value}][comment]`,
             value: '',
             id: `${this.id}-${question.value}-comment`
           });
-          this.addInput(commentinput, td);
+          this.addInput(commentinput, commentTd);
           // td.appendChild(this.text(question.label));
-          tr.appendChild(td);
         }
+        tr.appendChild(commentTd);
         tbody.appendChild(tr);
       });
+
       this.table.appendChild(tbody);
       this.element.appendChild(this.table);
       this.errorContainer = this.element;

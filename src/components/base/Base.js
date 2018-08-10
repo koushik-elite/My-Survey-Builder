@@ -655,14 +655,14 @@ export default class BaseComponent {
     const dialog = this.ce('div', {
       class: 'formio-dialog formio-dialog-theme-default component-settings'
     }, [
-      modalOverlay,
-      this.ce('div', {
-        class: 'formio-dialog-content modal-content'
-      }, [
-        modalBody,
-        closeDialog
-      ])
-    ]);
+        modalOverlay,
+        this.ce('div', {
+          class: 'formio-dialog-content modal-content'
+        }, [
+            modalBody,
+            closeDialog
+          ])
+      ]);
 
     this.addEventListener(modalOverlay, 'click', (event) => {
       event.preventDefault();
@@ -1004,7 +1004,7 @@ export default class BaseComponent {
    * @return {*}
    */
   errorMessage(type) {
-    return (this.component.errors && this.component.errors[type]) ? this.component.errors[type] :  type;
+    return (this.component.errors && this.component.errors[type]) ? this.component.errors[type] : type;
   }
 
   /**
@@ -1013,9 +1013,9 @@ export default class BaseComponent {
    * @returns {HTMLElement} - The html element of the remove button.
    */
   removeButton(index) {
-    const removeButton = this.ce('button', {
-      type: 'button',
-      class: 'btn btn-default btn-secondary'
+    const removeButton = this.ce('span', {
+      type: 'span',
+      class: 'deleteVal'
     });
 
     this.addEventListener(removeButton, 'click', (event) => {
@@ -1024,7 +1024,7 @@ export default class BaseComponent {
     });
 
     const removeIcon = this.ce('i', {
-      class: this.iconClass('trash-alt')
+      class: this.iconClass('trash')
     });
     removeButton.appendChild(removeIcon);
     return removeButton;
@@ -1469,7 +1469,6 @@ export default class BaseComponent {
         element.addEventListener(action.event, action.action);
       });
     });
-
     return div;
   }
 
@@ -1604,7 +1603,7 @@ export default class BaseComponent {
    * Check for conditionals and hide/show the element based on those conditions.
    */
   checkConditions(data) {
-    data = data || (this.root ? this.root.data: {});
+    data = data || (this.root ? this.root.data : {});
 
     // Check advanced conditions
     let result;

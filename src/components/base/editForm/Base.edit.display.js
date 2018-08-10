@@ -151,8 +151,8 @@ export default [
   {
     type: 'select',
     input: true,
-    key: 'questionType',
-    label: 'Question Type',
+    key: 'groupMode',
+    label: 'Question Group Type',
     tooltip: 'Type of question.',
     weight: 700,
     defaultValue: 'default',
@@ -160,8 +160,8 @@ export default [
     data: {
       values: [
         { label: 'Default', value: 'default' },
-        { label: 'Negative (Reset total to zero)', value: 'negative-reset' },
-        { label: 'Negative (subract with total)', value: 'left-right' }
+        { label: 'Negative (Reset total to zero)', value: 'auto-failure' },
+        { label: 'Negative (subract with total)', value: 'auto-subract' }
       ]
     }
   }/*,

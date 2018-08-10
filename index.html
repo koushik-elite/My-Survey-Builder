@@ -31,8 +31,56 @@
             default: true,
             weight: 0,
             components: {
+              textfield: {
+                title: 'Text Question',
+                key: 'textquestions',
+                icon: 'fa fa-terminal',
+                schema: {
+                  'tags': [],
+                  'type': 'textfield',
+                  'persistent': true,
+                  'protected': false,
+                  'defaultValue': '',
+                  'key': 'textquestions',
+                  'label': 'Text Questions',
+                  'tableView': true,
+                  'input': true
+                }
+              },
+              select: {
+                title: 'Dropdown Question',
+                key: 'dropdownquestions',
+                icon: 'fa fa-plus-square',
+                schema: {
+                  'tags': [],
+                  'type': 'select',
+                  'persistent': true,
+                  'protected': false,
+                  'defaultValue': '',
+                  'key': 'dropdownquestions',
+                  'label': 'Dropdown Questions',
+                  'tableView': true,
+                  'input': true
+                }
+              },
+              textarea: {
+                title: 'Textarea Question',
+                key: 'textareaquestions',
+                icon: 'fa fa-font',
+                schema: {
+                  'tags': [],
+                  'type': 'textarea',
+                  'persistent': true,
+                  'protected': false,
+                  'defaultValue': '',
+                  'key': 'textareaquestions',
+                  'label': 'Textarea Questions',
+                  'tableView': true,
+                  'input': true
+                }
+              },
               surveys: {
-                title: 'Yes/No Questions',
+                title: 'Yes/No Question',
                 key: 'survey',
                 icon: 'fa fa-list-alt',
                 schema: {
@@ -87,7 +135,7 @@
                 }
               },
               ratings: {
-                title: 'Rating Questions',
+                title: 'Rating Question',
                 key: 'rsurvey',
                 icon: 'fa fa-star',
                 schema: {
@@ -149,6 +197,7 @@
                   'persistent': true,
                   'protected': false,
                   'defaultValue': '',
+                  'groupMode': 'default',
                   'key': 'fieldset',
                   'legend': 'Questions Group',
                   'label': 'Sample Questions Group',
@@ -168,8 +217,10 @@
         "components": [
           {
             "input": true,
-            "label": "Questions Group",
+            "label": "Default",
+            "parent": true,
             "key": "questionsGroup",
+            "groupMode": "default",
             "components": [],
             "defaultValue": "",
             "protected": false,
