@@ -216,6 +216,7 @@ export default class WebformBuilder extends Webform {
   editComponent(component) {
     const componentCopy = _.cloneDeep(component);
     const componentClass = Components.components[componentCopy.component.type];
+    const componentTitle = componentCopy.component.label;
     // Make sure we only have one dialog open at a time.
     if (this.dialog) {
       this.dialog.close();
@@ -227,7 +228,6 @@ export default class WebformBuilder extends Webform {
       class: 'component-preview'
     });*/
     const componentInfo = componentClass ? componentClass.builderInfo : {};
-    console.info(componentInfo);
     const saveButton = this.ce('button', {
       class: 'btn btn-primary', // btn btn-success
       style: 'margin-right: 10px;'
@@ -250,7 +250,7 @@ export default class WebformBuilder extends Webform {
             class: 'col col-sm-6 modal-header'
           }, this.ce('h4', {
             class: 'modal-title pull-left'
-          }, `${componentInfo.title}`)),
+          }, `${componentTitle}`)),
           /*
           this.ce('div', {
             class: 'col col-sm-6'

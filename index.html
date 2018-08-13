@@ -42,7 +42,7 @@
                   'protected': false,
                   'defaultValue': '',
                   'key': 'textquestions',
-                  'label': 'Text Questions',
+                  'label': 'Text Question',
                   'tableView': true,
                   'input': true
                 }
@@ -58,7 +58,7 @@
                   'protected': false,
                   'defaultValue': '',
                   'key': 'dropdownquestions',
-                  'label': 'Dropdown Questions',
+                  'label': 'Dropdown Question',
                   'tableView': true,
                   'input': true
                 }
@@ -74,7 +74,7 @@
                   'protected': false,
                   'defaultValue': '',
                   'key': 'textareaquestions',
-                  'label': 'Textarea Questions',
+                  'label': 'Textarea Question',
                   'tableView': true,
                   'input': true
                 }
@@ -86,11 +86,6 @@
                 schema: {
                   'tags': [],
                   'type': 'survey',
-                  'validate': {
-                    'customPrivate': false,
-                    'custom': '',
-                    'required': false
-                  },
                   'persistent': true,
                   'protected': false,
                   'defaultValue': '',
@@ -106,30 +101,14 @@
                   }],
                   'questions': [
                     {
-                      'question': 'Be curious. Ask probing questions: Who, What, When, Where, Why, and How?',
+                      'question': '',
                       'value': 'ques1',
                       'comment': false,
-                      'score': 4,
-                      'scores': [
-                        { 'sname': 'perfect', 'scoresl': 7.5 },
-                        { 'sname': 'good', 'scoresl': 5 },
-                        { 'sname': 'average', 'scoresl': 1 },
-                        { 'sname': 'bad', 'scoresl': 0 }
-                      ]
-                    }, {
-                      'question': 'Determine root cause (unstated needs), not just the stated reason for the interaction',
-                      'value': 'ques2',
-                      'comment': true,
-                      'score': 5,
-                      'scores': [
-                        { 'sname': 'perfect', 'scoresl': 5 },
-                        { 'sname': 'good', 'scoresl': 2 },
-                        { 'sname': 'average', 'scoresl': 1 },
-                        { 'sname': 'bad', 'scoresl': 0 }
-                      ]
-                    }],
+                      'score': 0,
+                    }
+                  ],
                   'key': 'surveyQuestions',
-                  'label': 'Survey Questions',
+                  'label': 'Yes/No Question',
                   'tableView': true,
                   'input': true
                 }
@@ -159,28 +138,12 @@
                   }],
                   'questions': [
                     {
-                      'question': 'Demonstrate Care by showing empathy and putting themself in the customers shoes.',
+                      'question': '',
                       'value': 'ques1',
                       'comment': false,
-                      'score': 4,
-                      'scores': [
-                        { 'sname': 'perfect', 'scoresl': 7.5 },
-                        { 'sname': 'good', 'scoresl': 5 },
-                        { 'sname': 'average', 'scoresl': 1 },
-                        { 'sname': 'bad', 'scoresl': 0 }
-                      ]
-                    }, {
-                      'question': 'Be knowledgeable. Demonstrate confidence and expertise.',
-                      'value': 'ques2',
-                      'comment': true,
-                      'score': 5,
-                      'scores': [
-                        { 'sname': 'perfect', 'scoresl': 5 },
-                        { 'sname': 'good', 'scoresl': 2 },
-                        { 'sname': 'average', 'scoresl': 1 },
-                        { 'sname': 'bad', 'scoresl': 0 }
-                      ]
-                    }],
+                      'score': 0,
+                    }
+                  ],
                   'key': 'ratingQuestions',
                   'label': 'Rating Questions',
                   'tableView': true,
@@ -200,7 +163,7 @@
                   'groupMode': 'default',
                   'key': 'fieldset',
                   'legend': 'Questions Group',
-                  'label': 'Sample Questions Group',
+                  'label': 'Questions Group',
                   'tableView': true,
                   'input': true
                 }
