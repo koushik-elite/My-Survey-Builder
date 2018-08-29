@@ -1,4 +1,16 @@
-export default [/*
+export default [
+  {
+    key: 'questiontype',
+    ignore: true,
+    value: 'textfield'
+  },
+  {
+    type: 'hidden',
+    input: true,
+    weight: 700,
+    key: 'groupMode'
+  }
+  /*
   {
     weight: 410,
     type: 'textfield',

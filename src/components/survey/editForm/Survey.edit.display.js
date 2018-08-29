@@ -12,25 +12,27 @@ export default [
     key: 'questions',
     tooltip: 'The questions you would like to as in this survey question.',
     weight: 50,
-    defaultValue: [{ label: '', value: '', comment: false }],
     components: [
       {
         label: 'Question',
         key: 'question',
         input: true,
         type: 'textarea',
+        defaultValue: '',
       },
       {
         label: 'Comment',
         key: 'comment',
         input: true,
-        type: 'checkbox'
+        type: 'checkbox',
+        defaultValue: true,
       },
       {
         label: 'Score',
         key: 'score',
         input: true,
-        type: 'number'
+        type: 'number',
+        defaultValue: '0',
       },
       /*
       {
@@ -61,7 +63,7 @@ export default [
     key: 'values',
     tooltip: 'The values that can be selected per question. Example: \'Yes\', \'No\', etc.',
     weight: 50,
-    defaultValue: [{ label: '', value: '', commentmandatory: false }],
+    defaultValue: [{ label: '', value: 0, commentmandatory: false }],
     components: [
       {
         label: 'Label',
@@ -73,7 +75,8 @@ export default [
         label: 'Value',
         key: 'value',
         input: true,
-        type: 'number'
+        type: 'number',
+        defaultValue: 0,
       },
       {
         label: 'Comment Mandatory',
@@ -82,5 +85,11 @@ export default [
         type: 'checkbox'
       }
     ]
+  },
+  {
+    type: 'hidden',
+    input: true,
+    weight: 700,
+    key: 'groupMode'
   }
 ];

@@ -2,8 +2,9 @@
 
 <head>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <link rel='stylesheet' href='dist/formio.full.min.css'>
-  <script src='dist/formio.full.js'></script>
+  <script src='dist/formio.full.js?new'></script>
   <style>
     .formio-component-score input {
       width: 100px;
@@ -27,7 +28,7 @@
           data: false,
           layout: false,
           customBasic: {
-            title: 'Survey builder',
+            title: 'Evaluation builder',
             default: true,
             weight: 0,
             components: {
@@ -56,6 +57,7 @@
                   'type': 'select',
                   'persistent': true,
                   'protected': false,
+                  'questiontype' : 'drowdown',
                   'defaultValue': '',
                   'key': 'dropdownquestions',
                   'label': 'Dropdown Question',
@@ -88,7 +90,6 @@
                   'type': 'survey',
                   'persistent': true,
                   'protected': false,
-                  'defaultValue': '',
                   'values': [{
                     'label': 'Yes',
                     'value': '100'
@@ -122,7 +123,6 @@
                   'type': 'survey',
                   'persistent': true,
                   'protected': false,
-                  'defaultValue': '',
                   'values': [{
                     'label': 'Always',
                     'value': '100'
@@ -139,7 +139,6 @@
                   'questions': [
                     {
                       'question': '',
-                      'value': 'ques1',
                       'comment': false,
                       'score': 0,
                     }
@@ -179,24 +178,14 @@
         "owner": "554806425867f4ee203ea861",
         "components": [
           {
-            "input": true,
-            "label": "Default",
-            "parent": true,
-            "key": "questionsGroup",
-            "groupMode": "default",
-            "components": [],
-            "defaultValue": "",
-            "protected": false,
-            "persistent": true,
-            "unique": false,
-            "tableView": true,
-            "type": "fieldset",
+            "type" : "hidden",
+            "key": "questionsHidden",
           }
         ]
       };
       // Formio.createForm(document.getElementById('formio'), {}, builder);
 
-      Formio.builder(document.getElementById('formio'), formdata, builder).then(function (instance) {
+      Formio.builder(document.getElementById('formio'), {}, builder).then(function (instance) {
         // _this.formio = instance;
         instance.on('formUpdate', function (event, form) {
           // console.info(instance.data);

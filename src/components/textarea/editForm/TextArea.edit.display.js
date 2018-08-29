@@ -1,4 +1,15 @@
 export default [
+  {
+    key: 'questiontype',
+    ignore: true,
+    value: 'textarea'
+  },
+  {
+    type: 'hidden',
+    input: true,
+    weight: 700,
+    key: 'groupMode'
+  }
   /*
   {
     key: 'inputMask',

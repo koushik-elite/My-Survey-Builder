@@ -932,22 +932,19 @@ export default class BaseComponent {
   }
 
   iconClass(name, spinning) {
-    if (!this.options.icons || this.options.icons === 'glyphicon') {
-      return spinning ? `fa fa-${name} glyphicon-spin` : `fa fa-${name}`;
-    }
     switch (name) {
       case 'zoom-in':
-        return 'fa fa-search-plus';
+        return 'fas fa-search-plus';
       case 'zoom-out':
-        return 'fa fa-search-minus';
+        return 'fas fa-search-minus';
       case 'question-sign':
-        return 'fa fa-question-circle';
+        return 'fas fa-question-circle';
       case 'remove-circle':
-        return 'fa fa-times-circle-o';
+        return 'fas fa-times-circle';
       case 'new-window':
-        return 'fa fa-window-restore';
+        return 'far fa-window-restore';
       default:
-        return spinning ? `fa fa-${name} fa-spin` : `fa fa-${name}`;
+        return spinning ? `fas fa-${name} fa-spinner` : `fas fa-${name}`;
     }
   }
 

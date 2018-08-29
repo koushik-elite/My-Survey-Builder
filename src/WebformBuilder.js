@@ -59,7 +59,7 @@ export default class WebformBuilder extends Webform {
       if (!comp || !comp.component) {
         return container;
       }
-      console.log('-------Adding Component--------------');
+      // console.log('-------Adding Component--------------');
       if (!comp.noEdit && !comp.component.internal) {
         // Make sure the component position is relative so the buttons align properly.
         comp.getElement().style.position = 'relative';
@@ -230,7 +230,6 @@ export default class WebformBuilder extends Webform {
     const componentInfo = componentClass ? componentClass.builderInfo : {};
     const saveButton = this.ce('button', {
       class: 'btn btn-primary', // btn btn-success
-      style: 'margin-right: 10px;'
     }, this.t('Save'));
 
     const cancelButton = this.ce('button', {
@@ -239,7 +238,8 @@ export default class WebformBuilder extends Webform {
     }, this.t('Cancel'));
 
     const removeButton = this.ce('button', {
-      class: 'btn btn-default'
+      class: 'btn btn-default',
+      style: 'margin-right: 10px;'
     }, this.t('Remove'));
 
     const componentEdit = this.ce('div', {}, [
@@ -290,9 +290,9 @@ export default class WebformBuilder extends Webform {
               this.ce('div', {
                 style: 'margin-top: 10px; float:right'
               }, [
-                  saveButton,
                   cancelButton,
-                  removeButton
+                  removeButton,
+                  saveButton
                 ])
             ])
         ])
@@ -662,7 +662,7 @@ export default class WebformBuilder extends Webform {
     var tid = `${element.id}`;
     var cls = `${target._internal}`;
 
-    console.info(tid + ' ------ ' + cls);
+    // console.info(tid + ' ------ ' + cls);
 
     if (cls === 'builder') {
       if (tid !== 'builder-fieldset') {
@@ -785,7 +785,7 @@ export default class WebformBuilder extends Webform {
     }).on('drop', (element, target, source, sibling) => this.onDrop(element, target, source, sibling));
 
     // If there are no components, then we need to add a default submit button.
-    this.addSubmitButton();
+    // this.addSubmitButton();
     this.builderReadyResolve();
   }
 

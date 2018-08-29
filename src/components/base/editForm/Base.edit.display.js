@@ -160,8 +160,9 @@ export default [
     data: {
       values: [
         { label: 'Default', value: 'default' },
+        { label: 'Non-scorable Questions', value: 'no-score' },
         { label: 'Negative (Reset total to zero)', value: 'auto-failure' },
-        { label: 'Negative (subract with total)', value: 'auto-subract' }
+        { label: 'Negative (subtract with total)', value: 'auto-subract' }
       ]
     }
   }/*,

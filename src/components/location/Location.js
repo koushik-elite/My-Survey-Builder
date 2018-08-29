@@ -84,7 +84,7 @@ export default class LocationComponent extends BaseComponent {
         that.marker.setVisible(false);
         const place = autocomplete.getPlace();
         if (!place.geometry) {
-          console.log("Autocomplete's returned place contains no geometry");
+          // console.log("Autocomplete's returned place contains no geometry");
           return;
         }
 
